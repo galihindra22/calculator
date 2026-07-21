@@ -47,6 +47,9 @@ function display(values){
         if(resetDisplay === true){
             display.textContent = "";
             resetDisplay = false;
+            if(operator === undefined){
+                num1 = undefined;
+            }
         }
         if(display.textContent === "0"){
             if(values === "0"){
@@ -62,9 +65,9 @@ function display(values){
 
     if(num1 !== undefined && num2 !== undefined && operator !== undefined){
         num1 = operate(num1, operator, num2);
+        display.textContent = num1; 
         operator = undefined;
         num2 = undefined;
-        display.textContent = num1; 
         resetDisplay = true;
     }
     
