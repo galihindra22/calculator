@@ -19,18 +19,26 @@ function display(values){
         num2 = undefined;
         operator = undefined;
     }
-    else if((values === "+" || values === "-" || values === "/" || values === "*") && operator === undefined){
-        num1 = display.textContent;
-        operator = values;
-        resetDisplay = true;
+    else if((values === "+" || values === "-" || values === "/" || values === "*")){
+        if(operator === undefined){
+            num1 = display.textContent;
+            operator = values;
+            resetDisplay = true;
+        }
+        else if(resetDisplay ===true){
+            operator = values;
+        }
+        else{
+            num2 = display.textContent;
+            num1 = operate(num1, operator, num2);
+            operator = values;
+            num2 = undefined;
+            display.textContent = num1; 
+            resetDisplay = true;
+        }
     }
     else if((values === "+" || values === "-" || values === "/" || values === "*") && operator !== undefined){
-        num2 = display.textContent;
-        num1 = operate(num1, operator, num2);
-        operator = values;
-        num2 = undefined;
-        display.textContent = num1; 
-        resetDisplay = true;
+        
     }
     else if(values === "="){
         if(num1 !== undefined){
