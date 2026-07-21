@@ -37,9 +37,6 @@ function display(values){
             resetDisplay = true;
         }
     }
-    else if((values === "+" || values === "-" || values === "/" || values === "*") && operator !== undefined){
-        
-    }
     else if(values === "="){
         if(num1 !== undefined){
             num2 = display.textContent;
