@@ -1,2 +1,2 @@
 # calculator
-Hopefully will be a fully functional calculator with an interface.
+Fully functional calculator with UI. (Keyboard input is not supported)
