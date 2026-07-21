@@ -15,18 +15,26 @@ function display(values){
        
     if(values === "C"){
         display.textContent = "";
+        num1 = undefined;
+        num2 = undefined;
+        operator = undefined;
     }
-    else if(values === "+" || values === "-" || values === "/" || values === "*"){
+    else if((values === "+" || values === "-" || values === "/" || values === "*") && operator === undefined){
         num1 = display.textContent;
         operator = values;
-        console.log(operator);
-        console.log(num1);
+        resetDisplay = true;
+    }
+    else if((values === "+" || values === "-" || values === "/" || values === "*") && operator !== undefined){
+        num2 = display.textContent;
+        num1 = operate(num1, operator, num2);
+        operator = values;
+        num2 = undefined;
+        display.textContent = num1; 
         resetDisplay = true;
     }
     else if(values === "="){
         if(num1 !== undefined){
             num2 = display.textContent;
-            console.log(num2);
         }
 
     }
@@ -39,25 +47,31 @@ function display(values){
     }
 
     if(num1 !== undefined && num2 !== undefined && operator !== undefined){
-        display.textContent = operate(num1, operator, num2);
+        num1 = operate(num1, operator, num2);
+        operator = values;
+        num2 = undefined;
+        display.textContent = num1; 
+        resetDisplay = true;
     }
     
 }
 
 function operate(num1, operation, num2){
-    //if operation equals to something call that function something
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
     switch(operation){
         case "+": 
-            res = add(num1, num2);
+            res = Number(add(num1, num2).toFixed(4));
             break;
         case "-":
-            res = substract(num1, num2);
+            res = Number(substract(num1, num2).toFixed(4));
+            break;
         case "*":
-            res = multiply(num1, num2);
+            res = Number(multiply(num1, num2).toFixed(4));
+            break;
         case "/":
-            res = divide(num1, num2);
+            res = Number(divide(num1, num2).toFixed(4));
+            break;
     }
     return res;
 }
