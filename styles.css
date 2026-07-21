@@ -8,7 +8,7 @@ body{
 .wrapper{
     background-color: #D3D3D3;
     border-radius: 20px;
-    width: 600px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-self: center;
