@@ -14,7 +14,7 @@ function display(values){
     const display = document.getElementById("display");
        
     if(values === "C"){
-        display.textContent = "";
+        display.textContent = "0";
         num1 = undefined;
         num2 = undefined;
         operator = undefined;
@@ -48,12 +48,21 @@ function display(values){
             display.textContent = "";
             resetDisplay = false;
         }
+        if(display.textContent === "0"){
+            if(values === "0"){
+                display.textContent = "0";
+                return;
+            }
+            else{
+                display.textContent ="";
+            }
+        }
         display.textContent += values;
     }
 
     if(num1 !== undefined && num2 !== undefined && operator !== undefined){
         num1 = operate(num1, operator, num2);
-        operator = values;
+        operator = undefined;
         num2 = undefined;
         display.textContent = num1; 
         resetDisplay = true;
